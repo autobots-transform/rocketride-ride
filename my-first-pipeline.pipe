@@ -1,0 +1,225 @@
+{
+  "project_id": "93e6ddc2-9cd7-49eb-a959-b1ac02bbcdd9",
+  "components": [
+    {
+      "id": "parse_1",
+      "provider": "parse",
+      "config": {},
+      "ui": {
+        "position": {
+          "x": -212.2901862355793,
+          "y": -224.0185350087422
+        },
+        "measured": {
+          "width": 150,
+          "height": 136
+        },
+        "nodeType": "default",
+        "formDataValid": true
+      },
+      "input": [
+        {
+          "lane": "tags",
+          "from": "dropper_1"
+        },
+        {
+          "lane": "tags",
+          "from": "webhook_1"
+        }
+      ]
+    },
+    {
+      "id": "dropper_1",
+      "provider": "dropper",
+      "config": {
+        "hideForm": true,
+        "mode": "Source",
+        "parameters": {},
+        "type": "dropper"
+      },
+      "ui": {
+        "position": {
+          "x": -418.1487261918221,
+          "y": -284.95000660455685
+        },
+        "measured": {
+          "width": 150,
+          "height": 101
+        },
+        "nodeType": "default",
+        "formDataValid": true
+      }
+    },
+    {
+      "id": "llm_gemini_1",
+      "provider": "llm_gemini",
+      "config": {
+        "profile": "gemini-3_1-pro-preview",
+        "1-pro-preview": {
+          "apikey": ""
+        },
+        "parameters": {
+          "google": {}
+        }
+      },
+      "ui": {
+        "position": {
+          "x": 183.63442053840862,
+          "y": 25.441226029871302
+        },
+        "measured": {
+          "width": 150,
+          "height": 66
+        },
+        "nodeType": "default",
+        "formDataValid": true
+      },
+      "input": [
+        {
+          "lane": "questions",
+          "from": "prompt_1"
+        }
+      ]
+    },
+    {
+      "id": "question_1",
+      "provider": "question",
+      "config": {
+        "type": "question"
+      },
+      "ui": {
+        "position": {
+          "x": 177.42069212334107,
+          "y": -272.4310708163604
+        },
+        "measured": {
+          "width": 150,
+          "height": 66
+        },
+        "nodeType": "default",
+        "formDataValid": true
+      },
+      "input": [
+        {
+          "lane": "text",
+          "from": "anonymize_text_1"
+        }
+      ]
+    },
+    {
+      "id": "response_answers_1",
+      "provider": "response_answers",
+      "config": {
+        "laneName": "answers"
+      },
+      "ui": {
+        "position": {
+          "x": 183.30922375443583,
+          "y": 138.46795821490423
+        },
+        "measured": {
+          "width": 150,
+          "height": 66
+        },
+        "nodeType": "default",
+        "formDataValid": true
+      },
+      "input": [
+        {
+          "lane": "answers",
+          "from": "llm_gemini_1"
+        }
+      ]
+    },
+    {
+      "id": "prompt_1",
+      "provider": "prompt",
+      "config": {
+        "instructions": [
+          "You are a senior corporate attorney. Analyze the contract text provided and return ONLY valid JSON with risk_score, high_risk_clauses with confidence scores and exact quotes, missing_protections, plain_english_summary, and top_3_actions.For each high_risk_clause, the clause_name field must contain the actual legal name of the clause such as 'Unlimited Liability', 'IP Assignment', 'Auto-Renewal', 'Non-Compete', 'Unilateral Amendment' — never generic labels.",
+          "confidence_score must always be a decimal between 0.0 and 1.0. Never return a whole number like 99 — always return 0.99.",
+          "Always analyze the contract from the perspective of the party who is providing services or signing as the individual or smaller party — typically the contractor, freelancer, or employee. Flag risks that harm their interests specifically."
+        ],
+        "parameters": {
+          "google": {}
+        }
+      },
+      "ui": {
+        "position": {
+          "x": 181.35811920237728,
+          "y": -147.35420843087311
+        },
+        "measured": {
+          "width": 150,
+          "height": 119
+        },
+        "nodeType": "default",
+        "formDataValid": true
+      },
+      "input": [
+        {
+          "lane": "questions",
+          "from": "question_1"
+        }
+      ]
+    },
+    {
+      "id": "webhook_1",
+      "provider": "webhook",
+      "config": {
+        "hideForm": true,
+        "mode": "Source",
+        "parameters": {},
+        "type": "webhook"
+      },
+      "ui": {
+        "position": {
+          "x": -416.60002836425457,
+          "y": -104.21845626511956
+        },
+        "measured": {
+          "width": 150,
+          "height": 185
+        },
+        "nodeType": "default",
+        "formDataValid": true
+      }
+    },
+    {
+      "id": "anonymize_text_1",
+      "provider": "anonymize_text",
+      "config": {
+        "profile": "glinerMergedLarge",
+        "glinerMergedLarge": {
+          "anonymizeChar": "█"
+        }
+      },
+      "ui": {
+        "position": {
+          "x": -20.612953949434413,
+          "y": -171.2168086856154
+        },
+        "measured": {
+          "width": 150,
+          "height": 66
+        },
+        "nodeType": "default",
+        "formDataValid": true
+      },
+      "input": [
+        {
+          "lane": "text",
+          "from": "parse_1"
+        }
+      ]
+    }
+  ],
+  "viewport": {
+    "x": 725.9965497729435,
+    "y": 336.8020109845579,
+    "zoom": 1.0884914551998264
+  },
+  "version": 1,
+  "docRevision": 180,
+  "source": "dropper_1"
+}
