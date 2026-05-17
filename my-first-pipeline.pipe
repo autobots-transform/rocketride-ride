@@ -1,5 +1,5 @@
 {
-  "project_id": "93e6ddc2-9cd7-49eb-a959-b1ac02bbcdd9",
+  "project_id": "59da80c3-1b49-4f92-96a0-fca893cebfb5",
   "components": [
     {
       "id": "parse_1",
@@ -44,7 +44,7 @@
         },
         "measured": {
           "width": 150,
-          "height": 101
+          "height": 66
         },
         "nodeType": "default",
         "formDataValid": true
@@ -56,7 +56,7 @@
       "config": {
         "profile": "gemini-3_1-pro-preview",
         "1-pro-preview": {
-          "apikey": ""
+          "apikey": "AIzaSyCMiTgmPOGvlylJHspCMY_FN5L1lS0deFc"
         },
         "parameters": {
           "google": {}
@@ -179,7 +179,7 @@
         },
         "measured": {
           "width": 150,
-          "height": 185
+          "height": 214
         },
         "nodeType": "default",
         "formDataValid": true
@@ -215,11 +215,11 @@
     }
   ],
   "viewport": {
-    "x": 725.9965497729435,
-    "y": 336.8020109845579,
-    "zoom": 1.0884914551998264
+    "x": 730.6856928434696,
+    "y": 363.8151415584047,
+    "zoom": 1.1757936708899148
   },
   "version": 1,
-  "docRevision": 180,
-  "source": "dropper_1"
+  "docRevision": 181,
+  "source": "webhook_1"
 }
